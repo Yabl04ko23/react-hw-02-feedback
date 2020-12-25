@@ -9,43 +9,36 @@ class App extends Component {
     bad: 0,
   };
 
-  handleFeedback = (e) => {
-    const { good, neutral, bad } = this.state;
-    if (e.target.textContent === "Good") {
-      this.setState(() => {
-        return {
-          good: good + 1,
-        };
-      });
-    }
-    if (e.target.textContent === "Neutral") {
-      this.setState(() => {
-        return {
-          neutral: neutral + 1,
-        };
-      });
-    }
-    if (e.target.textContent === "Bad") {
-      this.setState(() => {
-        return {
-          bad: bad + 1,
-        };
-      });
-    }
+  handleFeedback = (type) => {
+    this.setState((state) => {
+      return {
+        [type]: state[type] + 1,
+      };
+    });
+  };
+
+  countTotalFeedback = () => {
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    return Object.values(this.state).reduce(reducer);
+  };
+
+  countPositiveFeedbackPercentage = (total) => {
+    const { good } = this.state;
+    return Math.round((100 / total) * good);
   };
 
   render() {
     const { good, neutral, bad } = this.state;
-    let total = good + neutral + bad;
-    let positivePercentage = Math.round((100 / total) * good);
+    const totalFeedback = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage(totalFeedback);
     return (
       <>
         <Section
           onLeaveFeedback={this.handleFeedback}
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={total}
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={totalFeedback}
           positivePercentage={positivePercentage}
         />
       </>

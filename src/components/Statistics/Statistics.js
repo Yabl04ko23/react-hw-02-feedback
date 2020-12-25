@@ -4,12 +4,12 @@ import styles from "./Statistics.module.css";
 
 class Statistics extends Component {
   render() {
-    const { total, good, neutral, bad, positivePercentage } = this.props;
+    const { totalFeedback, good, neutral, bad, positivePercentage } = this.props;
     Statistics.propTypes = {
       good: PropTypes.number,
       neutral: PropTypes.number,
       bad: PropTypes.number,
-      total: PropTypes.number,
+      totalFeedback: PropTypes.number,
       positivePercentage: PropTypes.number,
     };
 
@@ -26,7 +26,7 @@ class Statistics extends Component {
             Bad: <span>{bad}</span>
           </p>
           <p className={styles.statsItem}>
-            Total: <span>{total}</span>
+            Total: <span>{totalFeedback}</span>
           </p>
           <p className={styles.statsItem}>
             Positive feedback: <span>{positivePercentage}%</span>

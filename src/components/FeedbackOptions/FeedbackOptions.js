@@ -7,13 +7,13 @@ class FeedbackOptions extends Component {
       <div>
         <h2>Please, leave feedback</h2>
         <div className={styles.statsBlock}>
-          <button type="button" className={styles.statsBtn} onClick={this.props.onLeaveFeedback}>
+          <button type="button" className={styles.statsBtn} onClick={() => this.props.onLeaveFeedback("good")}>
             Good
           </button>
-          <button type="button" className={styles.statsBtn} onClick={this.props.onLeaveFeedback}>
+          <button type="button" className={styles.statsBtn} onClick={() => this.props.onLeaveFeedback("neutral")}>
             Neutral
           </button>
-          <button type="button" className={styles.statsBtn} onClick={this.props.onLeaveFeedback}>
+          <button type="button" className={styles.statsBtn} onClick={() => this.props.onLeaveFeedback("bad")}>
             Bad
           </button>
         </div>
