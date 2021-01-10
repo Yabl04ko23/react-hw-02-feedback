@@ -3,17 +3,17 @@ import styles from "./FeedbackOptions.module.css";
 
 class FeedbackOptions extends Component {
   render() {
+    const {onLeaveFeedback} = this.props
     return (
       <div>
-        <h2>Please, leave feedback</h2>
         <div className={styles.statsBlock}>
-          <button type="button" className={styles.statsBtn} onClick={() => this.props.onLeaveFeedback("good")}>
+          <button type="button" className={styles.statsBtn} onClick={() => onLeaveFeedback("good")}>
             Good
           </button>
-          <button type="button" className={styles.statsBtn} onClick={() => this.props.onLeaveFeedback("neutral")}>
+          <button type="button" className={styles.statsBtn} onClick={() => onLeaveFeedback("neutral")}>
             Neutral
           </button>
-          <button type="button" className={styles.statsBtn} onClick={() => this.props.onLeaveFeedback("bad")}>
+          <button type="button" className={styles.statsBtn} onClick={() => onLeaveFeedback("bad")}>
             Bad
           </button>
         </div>
