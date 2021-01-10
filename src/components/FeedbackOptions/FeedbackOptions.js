@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import styles from "./FeedbackOptions.module.css";
+import PropTypes from "prop-types";
 
 class FeedbackOptions extends Component {
   render() {
-    const {onLeaveFeedback} = this.props
+    FeedbackOptions.propTypes = {
+      onLeaveFeedback: PropTypes.func,
+    };
+    
+    const { onLeaveFeedback } = this.props;
     return (
       <div>
         <div className={styles.statsBlock}>
